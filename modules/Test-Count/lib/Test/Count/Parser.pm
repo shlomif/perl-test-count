@@ -3,6 +3,8 @@ package Test::Count::Parser;
 use warnings;
 use strict;
 
+use base 'Test::Count::Base';
+
 =head1 NAME
 
 Test::Count::Parser - A Parser for Test::Count. 
@@ -10,6 +12,13 @@ Test::Count::Parser - A Parser for Test::Count.
 =cut
 
 our $VERSION = '0.01';
+
+sub _init
+{
+    my $self = shift;
+    
+    return 0;
+}
 
 =head1 SYNOPSIS
 

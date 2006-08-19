@@ -1,11 +1,13 @@
 Build.PL
 Changes
+lib/Test/Count/Base.pm
+lib/Test/Count/Parser.pm
+lib/Test/Count.pm
 MANIFEST
 META.yml # Will be created by "make dist"
 README
-lib/Test/Count.pm
-lib/Test/Count/Parser.pm
 t/00-load.t
+t/01-parser.t
 t/boilerplate.t
 t/pod-coverage.t
 t/pod.t
