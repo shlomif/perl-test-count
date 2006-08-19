@@ -87,7 +87,7 @@ sub process
             my $s = $1;
             $parser->update_count(
                 {
-                    'text' => (($s eq "") ? 1 : $s),
+                    'text' => (($s eq "") ? 1 : substr($s,1)),
                 }
             );
         }
