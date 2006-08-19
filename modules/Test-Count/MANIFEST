@@ -1,0 +1,11 @@
+Build.PL
+Changes
+MANIFEST
+META.yml # Will be created by "make dist"
+README
+lib/Test/Count.pm
+lib/Test/Count/Parser.pm
+t/00-load.t
+t/boilerplate.t
+t/pod-coverage.t
+t/pod.t
