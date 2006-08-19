@@ -5,11 +5,7 @@ use strict;
 
 =head1 NAME
 
-Test::Count::Parser - The great new Test::Count::Parser!
-
-=head1 VERSION
-
-Version 0.01
+Test::Count::Parser - A Parser for Test::Count. 
 
 =cut
 
@@ -17,35 +13,17 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
     use Test::Count::Parser;
 
-    my $foo = Test::Count::Parser->new();
-    ...
+    my $parser = Test::Count::Parser->new();
 
-=head1 EXPORT
+    $parser->update_assignments($string);
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+    $parser->update_count($string);
+
+    my $value = $parser->get_count();
 
 =head1 FUNCTIONS
-
-=head2 function1
-
-=cut
-
-sub function1 {
-}
-
-=head2 function2
-
-=cut
-
-sub function2 {
-}
 
 =head1 AUTHOR
 
@@ -93,7 +71,7 @@ L<http://search.cpan.org/dist/Test::Count>
 
 Copyright 2006 Shlomi Fish, all rights reserved.
 
-This program is released under the following license: bsd
+This program is released under the following license: MIT X11.
 
 =cut
 
