@@ -9,6 +9,7 @@ my $builder = Module::Build->new(
     dist_version_from   => 'lib/Test/Count.pm',
     build_requires => {
         'Test::More' => 0,
+        'Parse::RecDescent' => 0,
     },
     add_to_cleanup      => [ 'Test::Count-*' ],
 );
