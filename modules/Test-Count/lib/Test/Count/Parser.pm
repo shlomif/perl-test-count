@@ -91,6 +91,15 @@ sub _init
 
     my $value = $parser->get_count();
 
+=head1 DESCRIPTIONS
+
+After initiating a parser one can input assignment expressions, and count
+update experssions. Both of them use arithmetic operations, integers, and
+Perl-like variable names.
+
+At the end one should call C<$parser->get_count()> in order to get the
+total number of tests.
+
 =head1 FUNCTIONS
 
 =head2 $parser->update_assignments({'text' => $mytext,)
