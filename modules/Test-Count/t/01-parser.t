@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 3;
+use Test::More tests => 4;
 
 use Test::Count::Parser;
 
@@ -49,4 +49,33 @@ use Test::Count::Parser;
     );
     # TEST
     is ($parser->get_count(), 10, "Checking for correct calculation");
+}
+
+{
+    my $parser = Test::Count::Parser->new();
+    $parser->update_assignments(
+        {
+            text => q{$var1=100}
+        },
+    );
+    
+    $parser->update_count(
+        {
+            text => q{$var1-30}
+        }
+    );
+    # Now count is 70
+
+    $parser->update_assignments(
+        {
+            text => q{$shlomif=50}
+        },
+    );
+    $parser->update_count(
+        {
+            text => q{$shlomif*4},
+        }
+    );
+    # TEST
+    is ($parser->get_count(), 270, "Checking for correct calculation");
 }
