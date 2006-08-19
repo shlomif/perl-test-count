@@ -1,6 +1,7 @@
 Build.PL
 Changes
 lib/Test/Count/Base.pm
+lib/Test/Count/Filter.pm
 lib/Test/Count/Parser.pm
 lib/Test/Count.pm
 MANIFEST
@@ -9,6 +10,7 @@ README
 t/00-load.t
 t/01-parser.t
 t/02-main.t
+t/03-filter.t
 t/boilerplate.t
 t/pod-coverage.t
 t/pod.t
