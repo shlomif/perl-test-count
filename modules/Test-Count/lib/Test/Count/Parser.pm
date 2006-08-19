@@ -189,6 +189,11 @@ L<http://search.cpan.org/dist/Test::Count>
 
 =head1 ACKNOWLEDGEMENTS
 
+The Parser uses L<Parse::RecDescent> by Damian Conway and is based on the
+example code of René Nyffenegger (L<http://www.adp-gmbh.ch/>) available here:
+
+L<http://www.adp-gmbh.ch/perl/rec_descent.html>
+
 =head1 COPYRIGHT & LICENSE
 
 Copyright 2006 Shlomi Fish, all rights reserved.
