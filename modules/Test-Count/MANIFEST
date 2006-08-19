@@ -8,6 +8,8 @@ META.yml # Will be created by "make dist"
 README
 t/00-load.t
 t/01-parser.t
+t/02-main.t
 t/boilerplate.t
 t/pod-coverage.t
 t/pod.t
+t/sample-data/test-scripts/01-parser.t
