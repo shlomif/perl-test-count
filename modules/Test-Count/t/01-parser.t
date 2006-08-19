@@ -48,7 +48,7 @@ use Test::Count::Parser;
         },
     );
     # TEST
-    is ($parser->get_count(), 10, "Checking for correct calculation");
+    is ($parser->get_count(), 10, "2 update_assignments()'s");
 }
 
 {
@@ -77,5 +77,5 @@ use Test::Count::Parser;
         }
     );
     # TEST
-    is ($parser->get_count(), 270, "Checking for correct calculation");
+    is ($parser->get_count(), 270, "2 update_count()'s");
 }
