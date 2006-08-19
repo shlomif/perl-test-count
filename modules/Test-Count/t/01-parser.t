@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 4;
+use Test::More tests => 5;
 
 use Test::Count::Parser;
 
@@ -78,4 +78,15 @@ use Test::Count::Parser;
     );
     # TEST
     is ($parser->get_count(), 270, "2 update_count()'s");
+}
+
+{
+    my $parser = Test::Count::Parser->new();
+    $parser->update_count(
+        {
+            text => q{7/2}
+        }
+    );
+    # TEST
+    is ($parser->get_count(), 3, "use integer");
 }

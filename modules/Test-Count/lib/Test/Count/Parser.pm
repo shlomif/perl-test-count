@@ -33,7 +33,7 @@ expression:     term '+' expression      {$item [1] + $item [3]}
               | term
 
 term:           factor '*' term          {$item [1] * $item [3]}
-              | factor '/' term          {$item [1] / $item [3]}
+              | factor '/' term          {int($item [1] / $item [3])}
               | factor
 
 factor:         number
