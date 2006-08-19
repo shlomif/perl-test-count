@@ -1,4 +1,7 @@
 Revision history for Test::Count
 
-0.00_01   Sat Aug 19 12:22:14 IDT 2006
-          First version, starting from the skeleton of Module-Starter.
+0.01      Sat Aug 19 17:57:31 IDT 2006
+          - First version
+          - starting from the skeleton of Module-Starter.
+          - Implemented most of the desired functionality. (except various
+          nice to have customizations.)
