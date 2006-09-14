@@ -1,8 +1,12 @@
 use strict;
 use warnings;
-use Module::Build;
 
-my $builder = Module::Build->new(
+use File::Spec;
+use lib File::Spec->catdir(File::Spec->curdir(), "inc");
+
+use Test::Run::Builder;
+
+my $builder = Test::Run::Builder->new(
     module_name         => 'Test::Count',
     license             => 'bsd',
     dist_abstract        => "A Module to keep track of the number of tests in a script.",
@@ -16,3 +20,4 @@ my $builder = Module::Build->new(
 );
 
 $builder->create_build_script();
+
