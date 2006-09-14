@@ -1,6 +1,9 @@
 Revision history for Test::Count
 
-          - Added an acknowledgement in Parse::RecDescent.
+0.0101    Thu Sep 14 17:03:00 IDT 2006
+          - Added an acknowledgement for Parse::RecDescent.
+          - Converted Build.PL to Test::Run::Builder.
+          - Added more meaningful documentation.
 
 0.01      Sat Aug 19 17:57:31 IDT 2006
           - First version
