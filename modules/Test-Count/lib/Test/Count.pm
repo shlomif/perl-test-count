@@ -40,6 +40,27 @@ our $VERSION = '0.01';
 
     $ cat "t/mytest.t" | perl -MTest::Count::Filter -e 'filter()'
 
+=head1 DESCRIPTION
+
+Test::Count is a set of perl modules for keeping track of the number of tests
+in a test file. It works by putting in comments of the form C<# TEST> 
+(one test), C<# TEST*$EXPR> or C<# TEST+$EXPR> (both are multiple tests).
+Test::Count count these tests throughout the fileand return all of their
+results.
+
+One can put any mathematical expressions (using parentheses, C<+>, C<->,
+C<*>, C</> and C<%> there). Also one can assign variables using 
+C<# TEST:$myvar=5+6;$second_var=$myvar+3> and later use them in the add
+to count expressions.
+
+One can find example test scripts under t/.
+
+A simple Vim (L<http://www.vim.org/>) function to update the count of the
+tests in the file is:
+
+    function! Perl_Tests_Count()
+        %!perl -MTest::Count::Filter -e 'Test::Count::Filter->new({})->process()'
+    endfunction
 
 =head1 FUNCTIONS
 
@@ -143,7 +164,7 @@ L<http://search.cpan.org/dist/Test::Count>
 
 Copyright 2006 Shlomi Fish, all rights reserved.
 
-This program is released under the following license: bsd
+This program is released under the following license: MIT X11.
 
 =cut
 
