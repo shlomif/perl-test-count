@@ -17,6 +17,7 @@ my $builder = Test::Run::Builder->new(
         'Parse::RecDescent' => 0,
     },
     add_to_cleanup      => [ 'Test::Count-*' ],
+    create_makefile_pl => "passthrough",
 );
 
 $builder->create_build_script();

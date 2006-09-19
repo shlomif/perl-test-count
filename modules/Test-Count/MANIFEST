@@ -5,6 +5,7 @@ lib/Test/Count/Base.pm
 lib/Test/Count/Filter.pm
 lib/Test/Count/Parser.pm
 lib/Test/Count.pm
+Makefile.PL
 MANIFEST
 META.yml # Will be created by "make dist"
 README

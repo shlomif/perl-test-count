@@ -1,5 +1,8 @@
 Revision history for Test::Count
 
+0.0102    Tue Sep 19 14:40:34 IDT 2006
+          - Now generating a pass-through Makefile.PL.
+
 0.0101    Thu Sep 14 17:03:00 IDT 2006
           - Added an acknowledgement for Parse::RecDescent.
           - Converted Build.PL to Test::Run::Builder.
