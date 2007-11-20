@@ -20,7 +20,7 @@ sub _get_grammar
     return <<'EOF';
 update_count: expression            {$thisparser->{count} += $item[1]}
 
-assignments:    assignment ';' assignments
+assignments:    assignment <commit> ';' assignments
               | assignment
 
 statement:    assignment
@@ -37,7 +37,11 @@ term:           factor '*' term          {$item [1] * $item [3]}
               | factor
 
 factor:         number
-              | variable                 {$thisparser->{vars}->{$item [1]} || do { die "Undefined variable \"$item[1]\""; } }
+              | variable                 {
+                (exists($thisparser->{vars}->{$item [1]}) 
+                    ? $thisparser->{vars}->{$item [1]}
+                    : do { die "Undefined variable \"$item[1]\""; } )
+                    }
               | '+' factor               {$item [2]}
               | '-' factor               {$item [2] * -1}
               | '(' statement ')'        {$item [2]}

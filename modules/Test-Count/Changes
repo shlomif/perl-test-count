@@ -2,6 +2,9 @@ Revision history for Test::Count
 
           - Upgraded Test::Run::Builder that works properly with the recent
           Test::Run and friends.          
+          - Fixed a bug with using variables whose values are zero in
+          expressions.
+          - Fixed a bug in which assignments were performed twice.
 
 0.0102    Tue Sep 19 14:40:34 IDT 2006
           - Now generating a pass-through Makefile.PL.

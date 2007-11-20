@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 5;
+use Test::More tests => 6;
 
 use Test::Count::Parser;
 
@@ -89,4 +89,38 @@ use Test::Count::Parser;
     );
     # TEST
     is ($parser->get_count(), 3, "use integer");
+}
+
+{
+    my $parser = Test::Count::Parser->new();
+    $parser->update_assignments(
+        {
+            text => q{$n=0}
+        }
+    );
+    $parser->update_assignments(
+        {
+            text => q{$n=$n+1}
+        }
+    );
+    $parser->update_assignments(
+        {
+            text => q{$n=$n+1}
+        }
+    );
+    $parser->update_assignments(
+        {
+            text => q{$n=$n+1}
+        }
+    );
+    $parser->update_count(
+        {
+            text => q{$n*2}
+        }
+    );
+    
+    # TEST
+    is ($parser->get_count(), 6, 
+        "Using a variable whose value is 0 inside an expression"
+    );
 }
