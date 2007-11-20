@@ -1,5 +1,6 @@
 Revision history for Test::Count
 
+0.0103    Tue Nov 20 22:52:42 IST 2007
           - Upgraded Test::Run::Builder that works properly with the recent
           Test::Run and friends.          
           - Fixed a bug with using variables whose values are zero in
