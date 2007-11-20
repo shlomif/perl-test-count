@@ -1,5 +1,8 @@
 Revision history for Test::Count
 
+          - Upgraded Test::Run::Builder that works properly with the recent
+          Test::Run and friends.          
+
 0.0102    Tue Sep 19 14:40:34 IDT 2006
           - Now generating a pass-through Makefile.PL.
 
