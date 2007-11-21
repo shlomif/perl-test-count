@@ -1,5 +1,9 @@
 Revision history for Test::Count
 
+0.0104    Wed Nov 21 12:07:32 IST 2007
+          - Fixed the 'requires' and 'build_requires' in the Build.PL
+          file.
+
 0.0103    Tue Nov 20 22:52:42 IST 2007
           - Upgraded Test::Run::Builder that works properly with the recent
           Test::Run and friends.          
