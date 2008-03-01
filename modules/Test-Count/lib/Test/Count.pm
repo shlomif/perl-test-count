@@ -103,7 +103,8 @@ sub process
                 }
             );
         }
-        elsif ($line =~ /# TEST((?:[+*].*)?)$/)
+        # The \s* is to handle trailing whitespace properly.
+        elsif ($line =~ /# TEST((?:[+*].*)?)\s*$/)
         {
             my $s = $1;
             $parser->update_count(

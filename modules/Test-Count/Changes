@@ -1,5 +1,7 @@
 Revision history for Test::Count
 
+          - Now handling trailing whitespace in "# TEST" lines properly.
+
 0.0104    Wed Nov 21 12:07:32 IST 2007
           - Fixed the 'requires' and 'build_requires' in the Build.PL
           file.
