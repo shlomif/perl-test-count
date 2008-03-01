@@ -1,5 +1,6 @@
 Revision history for Test::Count
 
+0.0105    Sat Mar  1 15:52:35 IST 2008
           - Now handling trailing whitespace in "# TEST" lines properly.
 
 0.0104    Wed Nov 21 12:07:32 IST 2007
