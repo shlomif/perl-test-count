@@ -17,6 +17,16 @@ sub _in_fh
     return $self->{'_in_fh'};
 }
 
+sub _assert_prefix_regex
+{
+    my $self = shift;
+    if (@_)
+    {
+        $self->{'_assert_prefix_regex'} = shift;
+    }
+    return $self->{'_assert_prefix_regex'};
+}
+
 sub _init
 {
     my $self = shift;
@@ -25,12 +35,21 @@ sub _init
     my $in = $args->{'input_fh'};
 
     $self->_in_fh($in);
+    if (exists($args->{'assert_prefix_regex'}))
+    {
+        my $re = $args->{'assert_prefix_regex'};
+        $self->_assert_prefix_regex((ref($re) eq "") ? qr{$re} : $re);
+    }
+    else
+    {
+        $self->_assert_prefix_regex(qr{# TEST});
+    }
 
     return 0;
 }
 =head1 NAME
 
-Test::Count - Module for keeping track of the number of tests in a Test Script.
+Test::Count - Module for keeping track of the number of tests in a test script.
 
 =cut
 
@@ -64,9 +83,23 @@ tests in the file is:
 
 =head1 FUNCTIONS
 
-=head2 $counter->process({ 'input_fh' => \*MYFILEHANDLE});
+=head2 my $counter = Test::Count->new({'input_fh' => \*MYFILEHANDLE});
 
-Process the filehandle specified in 'input_fh', and return a
+Creates a new Test::Count object that process the filehandle specified in 
+C<'input_fh'>. Optional keys are:
+
+=over 4
+
+=item * 'assert_prefix_regex' => qr{; TEST}
+
+A regular expression for specifying the prefix for a "TEST" assertion that
+updates the grammar. Defaults to C<"# TEST">.
+
+=back
+
+=head2 $counter->process();
+
+Process the filehandle specified in 'input_fh' in ->new(), and return a
 hash ref with the following keys:
 
 =over 4
@@ -89,13 +122,15 @@ sub process
 
     my $parser = Test::Count::Parser->new();
 
+    my $assert_re = $self->_assert_prefix_regex();
+
     my @file_lines;
     while (my $line = readline($self->_in_fh()))
     {
         push @file_lines, $line;
 
         chomp($line);
-        if ($line =~ /# TEST:(.*)$/)
+        if ($line =~ /${assert_re}:(.*)$/)
         {
             $parser->update_assignments(
                 {
@@ -104,7 +139,7 @@ sub process
             );
         }
         # The \s* is to handle trailing whitespace properly.
-        elsif ($line =~ /# TEST((?:[+*].*)?)\s*$/)
+        elsif ($line =~ /${assert_re}((?:[+*].*)?)\s*$/)
         {
             my $s = $1;
             $parser->update_count(

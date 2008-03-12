@@ -18,3 +18,4 @@ t/pod-coverage.t
 t/pod.t
 t/sample-data/test-scripts/01-parser.t
 t/sample-data/test-scripts/arithmetics.t
+t/sample-data/test-scripts/basic.arc

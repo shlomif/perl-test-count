@@ -35,6 +35,26 @@ sub _out_fh
     return $self->{'_out_fh'};
 }
 
+sub _plan_prefix_regex
+{
+    my $self = shift;
+    if (@_)
+    {
+        $self->{'_plan_prefix_regex'} = shift;
+    }
+    return $self->{'_plan_prefix_regex'};
+}
+
+sub _assert_prefix_regex
+{
+    my $self = shift;
+    if (@_)
+    {
+        $self->{'_assert_prefix_regex'} = shift;
+    }
+    return $self->{'_assert_prefix_regex'};
+}
+
 =head2 my $filter = Test::Count::Filter->new({%args});
 
 C<%args> may contain the following:
@@ -49,6 +69,18 @@ The input filehandle - defaults to STDIN.
 
 The output filehandle - defaults to STDOUT.
 
+=item * assert_prefix_regex
+
+Passed to L<Test::Count>.
+
+=item * plan_prefix_regex
+
+The prefix regex for detecting a plan line: i.e: a line that specifies
+how many tests to run. Followed immediately by a sequence of digits containing
+the number of tests. The latter will be updated with the number of tests.
+
+Can be a regex or a string.
+
 =back
 
 =cut
@@ -60,9 +92,18 @@ sub _init
 
     $args->{input_fh} ||= \*STDIN;
     $args->{output_fh} ||= \*STDOUT;
+    $args->{plan_prefix_regex} ||= qr{(?:(?:use Test.*\btests)|plan tests)\s*=>\s*};
+
+
+    # Remmed out because Test::Count handles it by itself.
+    # if (defined($args->{assert_prefix_regex}))
+    # {
+    #     $self->_assert_prefix_regex($args->{assert_prefix_regex});
+    # }
+    $self->_plan_prefix_regex($args->{plan_prefix_regex});
+    $self->_out_fh($args->{output_fh});
 
     $self->_counter(Test::Count->new($args));
-    $self->_out_fh($args->{output_fh});
 
     return 0;
 }
@@ -81,12 +122,14 @@ sub process
     
     my $count = $ret->{tests_count};
 
+    my $plan_re = $self->_plan_prefix_regex();
+
     my @lines = @{$ret->{lines}};
     LINES_LOOP:
     while (my $l = shift(@lines))
     {
         if ($l =~ 
-            s{^((?:(?:use Test.*\btests)|plan tests)\s*=>\s*)\d+}{$1$count}
+            s{^($plan_re)\d+}{$1$count}
            )
         {
             print {$self->_out_fh()} $l;
