@@ -12,7 +12,7 @@ use IO::Scalar;
 {
     open my $in, "<", File::Spec->catfile("t", "sample-data", "test-scripts", "01-parser.t");
     my $buffer = "";
-    my $out = IO::Scalar->new(\$buffer);    
+    my $out = IO::Scalar->new(\$buffer);
     
     my $filter = Test::Count::Filter->new(
         {
