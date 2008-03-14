@@ -1,5 +1,9 @@
 Revision history for Test::Count
 
+0.02      Fri Mar 14 13:12:50 IST 2008
+          - Added the 'assert_prefix_regex' and 'plan_prefix_regex' options
+          so one can apply Test::Count on different languages besides Perl.
+
 0.0105    Sat Mar  1 15:52:35 IST 2008
           - Now handling trailing whitespace in "# TEST" lines properly.
 
