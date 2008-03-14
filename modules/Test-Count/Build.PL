@@ -18,8 +18,11 @@ my $builder = Test::Run::Builder->new(
         'perl' => 5.006,
     },
     build_requires => {
+        'File::Spec' => 0,
         'Test::More' => 0,
         'IO::Scalar' => 0,
+        'strict' => 0,
+        'warnings' => 0,
     },
     add_to_cleanup      => [ 'Test::Count-*' ],
     create_makefile_pl => "passthrough",
