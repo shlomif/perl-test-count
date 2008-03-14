@@ -53,7 +53,7 @@ Test::Count - Module for keeping track of the number of tests in a test script.
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 

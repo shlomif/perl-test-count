@@ -1,5 +1,8 @@
 Revision history for Test::Count
 
+0.03      Fri Mar 14 21:11:04 IST 2008
+          - added some examples to examples/ - Kwalitee and stuff.
+
 0.02      Fri Mar 14 13:12:50 IST 2008
           - Added the 'assert_prefix_regex' and 'plan_prefix_regex' options
           so one can apply Test::Count on different languages besides Perl.
