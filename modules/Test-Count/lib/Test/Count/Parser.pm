@@ -20,17 +20,18 @@ sub _get_grammar
     return <<'EOF';
 update_count: expression            {$thisparser->{count} += $item[1]}
 
-assignments:    assignment <commit> ';' assignments
-              | assignment
+assignments:    statement <commit> ';' assignments
+              | statement
 
 statement:    assignment
               | expression               {$item [1]}
 
 assignment:    variable '=' statement   {$thisparser->{vars}->{$item [1]} = $item [3]}
 
-expression:     term '+' expression      {$item [1] + $item [3]}
+expression:     variable '++'            {$thisparser->{vars}->{$item [1]}++}
+              | term '+' expression      {$item [1] + $item [3]}
               | term '-' expression      {$item [1] - $item [3]}
-              | term
+              | term 
 
 term:           factor '*' term          {$item [1] * $item [3]}
               | factor '/' term          {int($item [1] / $item [3])}

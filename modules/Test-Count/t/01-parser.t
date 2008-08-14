@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 6;
+use Test::More tests => 8;
 
 use Test::Count::Parser;
 
@@ -122,5 +122,58 @@ use Test::Count::Parser;
     # TEST
     is ($parser->get_count(), 6, 
         "Using a variable whose value is 0 inside an expression"
+    );
+}
+
+{
+    my $parser = Test::Count::Parser->new();
+
+    $parser->update_assignments(
+        {
+            text => q{$cnt=0}
+        }
+    );
+    $parser->update_assignments(
+        {
+            text => q{$cnt++}
+        }
+    );
+    $parser->update_assignments(
+        {
+            text => q{$cnt++}
+        }
+    );
+    $parser->update_count(
+        {
+            text => q{$cnt}
+        }
+    );
+    
+    # TEST
+    is ($parser->get_count(), 2, 
+        "Testing ++",
+    );
+    
+    $parser->update_assignments(
+        {
+            text => q{$test_num=$cnt}
+        }
+    );
+
+    $parser->update_assignments(
+        {
+            text => q{$test_num=(($test_num+1)*3)}
+        }
+    );
+
+    $parser->update_count(
+        {
+            text => q{$test_num},
+        }
+    );
+
+    # TEST
+    is ($parser->get_count(), (2+(2+1)*3), 
+        "Testing assignment to a ++'ed variable",
     );
 }
