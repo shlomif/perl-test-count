@@ -53,7 +53,7 @@ Test::Count - Module for keeping track of the number of tests in a test script.
 
 =cut
 
-our $VERSION = '0.0301';
+our $VERSION = '0.04';
 
 =head1 SYNOPSIS
 
@@ -68,9 +68,10 @@ Test::Count count these tests throughout the fileand return all of their
 results.
 
 One can put any mathematical expressions (using parentheses, C<+>, C<->,
-C<*>, C</> and C<%> there). Also one can assign variables using 
+C<*>, C</> and C<%> there). 
+One can also assign variables using 
 C<# TEST:$myvar=5+6;$second_var=$myvar+3> and later use them in the add
-to count expressions.
+to count expressions. A C<$var++> construct is also available.
 
 One can find example test scripts under t/.
 
