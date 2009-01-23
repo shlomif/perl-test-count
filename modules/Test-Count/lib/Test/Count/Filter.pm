@@ -157,10 +157,10 @@ sub process
 
     my $value = $parser->get_count();
 
-=head1 DESCRIPTIONS
+=head1 DESCRIPTION
 
 After initiating a parser one can input assignment expressions, and count
-update experssions. Both of them use arithmetic operations, integers, and
+update expressions. Both of them use arithmetic operations, integers, and
 Perl-like variable names.
 
 At the end one should call C<$parser->get_count()> in order to get the
@@ -261,7 +261,7 @@ L<Test::Count>, L<Test::Count::Parser>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2006 Shlomi Fish, all rights reserved.
+Copyright 2006 Shlomi Fish.
 
 This program is released under the following license: MIT X11.
 

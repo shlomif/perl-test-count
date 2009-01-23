@@ -201,7 +201,7 @@ L<http://www.adp-gmbh.ch/perl/rec_descent.html>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2006 Shlomi Fish, all rights reserved.
+Copyright 2006 Shlomi Fish.
 
 This program is released under the following license: MIT X11.
 
