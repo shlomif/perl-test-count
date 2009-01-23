@@ -8,7 +8,7 @@ use Test::Run::Builder;
 
 my $builder = Test::Run::Builder->new(
     module_name         => 'Test::Count',
-    license             => 'bsd',
+    license             => 'mit',
     dist_abstract        => "A Module to keep track of the number of tests in a script.",
     dist_author         => 'Shlomi Fish <shlomif@cpan.org>',
     dist_version_from   => 'lib/Test/Count.pm',
