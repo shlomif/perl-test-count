@@ -26,6 +26,29 @@ my $builder = Test::Run::Builder->new(
     },
     add_to_cleanup      => [ 'Test::Count-*' ],
     create_makefile_pl => "passthrough",
+    meta_merge =>
+    {
+        resources =>
+        {
+            repository => "http://svn.berlios.de/svnroot/repos/web-cpan/Test-Count/trunk",
+        },
+        keywords =>
+        [
+            "annotations",
+            "assertions",
+            "count",
+            "interpreter",
+            "number",
+            "qa",
+            "sanity",
+            "tap",
+            "tap",
+            "TAP",
+            "test",
+            "Test::More",
+            "tests",
+        ],
+    },
 );
 
 $builder->create_build_script();
