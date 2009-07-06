@@ -1,5 +1,8 @@
 Revision history for Test::Count
 
+          - Added lib/Test/Count/Filter/ByFileType/App.pm , which allows
+          command-line filtering by file-type.
+
 0.0401    Fri Jan 23 18:38:45 IST 2009
           - Documentation fixes.
 
