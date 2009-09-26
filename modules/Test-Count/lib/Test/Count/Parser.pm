@@ -5,6 +5,8 @@ use strict;
 
 use base 'Test::Count::Base';
 
+use File::Basename (qw(dirname));
+
 use Parse::RecDescent;
 
 =head1 NAME
@@ -25,6 +27,9 @@ assignments:    statement <commit> ';' assignments
 
 statement:    assignment
               | expression               {$item [1]}
+              | including_file           {$item [1]}
+
+including_file: 'source' string          {push @{$thisparser->{includes}}, $item[2];}
 
 assignment:    variable '=' statement   {$thisparser->{vars}->{$item [1]} = $item [3]}
 
@@ -50,6 +55,9 @@ factor:         number
 number:         /\d+/                    {$item [1]}
 
 variable:       /\$[a-z_]\w*/i
+
+string:         /"[^"]+"/
+
 EOF
 }
 
@@ -61,6 +69,7 @@ sub _calc_parser
 
     $parser->{vars} = {};
     $parser->{count} = 0;
+    $parser->{includes} = [];
 
     return $parser;
 }
@@ -75,10 +84,21 @@ sub _parser
     return $self->{'_parser'};
 }
 
+sub _current_fns
+{
+    my $self = shift;
+    if (@_)
+    {
+        $self->{'_current_fns'} = shift;
+    }
+    return $self->{'_current_fns'};
+}
+
 sub _init
 {
     my $self = shift;
 
+    $self->_current_fns([]);
     $self->_parser($self->_calc_parser());
 
     return 0;
@@ -118,11 +138,68 @@ Then at the end C<$myvar> would be 500 and C<$another_var> would be 508.
 
 =cut
 
+sub _push_current_filename
+{
+    my $self = shift;
+    my $filename = shift;
+
+    push @{$self->_current_fns()}, $filename;
+
+    return;
+}
+
+sub _pop_current_filenames
+{
+    my $self = shift;
+    my $filename = shift;
+
+    pop(@{$self->_current_fns()});
+
+    return;
+}
+
+sub _get_current_filename
+{
+    my $self = shift;
+
+    return $self->_current_fns->[-1];
+}
+
+sub _parse_filename
+{
+    my $self = shift;
+    my $filename = shift;
+
+    $filename =~ s{\A"}{};
+    $filename =~ s{"\z}{};
+
+    my $dirname = dirname($self->_get_current_filename());
+    $filename =~ s{\$\^CURRENT_DIRNAME}{$dirname}g;
+
+    return $filename;
+}
+
 sub update_assignments
 {
     my ($self, $args) = @_;
 
-    return $self->_parser()->assignments($args->{text});
+    $self->_parser->{includes} = [];
+    my $ret = $self->_parser()->assignments($args->{text});
+
+    if (@{$self->_parser->{includes}})
+    {
+        foreach my $include_file (@{$self->_parser->{includes}})
+        {
+            my $counter =
+                Test::Count->new(
+                    {
+                        filename => $self->_parse_filename($include_file),
+                    },
+                );
+            $counter->process({parser => $self});
+        }
+        $self->_parser->{includes} = [];
+    }
 }
 
 =head2 $parser->update_count({'text' => $mytext,)

@@ -4,6 +4,7 @@ examples/perl-test-manage-helper.pl
 examples/perl-test-manage.vim
 inc/Test/Run/Builder.pm
 lib/Test/Count/Base.pm
+lib/Test/Count/FileMutator.pm
 lib/Test/Count/Filter/ByFileType/App.pm
 lib/Test/Count/Filter.pm
 lib/Test/Count/Parser.pm
@@ -16,9 +17,12 @@ t/00-load.t
 t/01-parser.t
 t/02-main.t
 t/03-filter.t
+t/04-modify-file-in-place.t
 t/boilerplate.t
 t/pod-coverage.t
 t/pod.t
 t/sample-data/test-scripts/01-parser.t
 t/sample-data/test-scripts/arithmetics.t
 t/sample-data/test-scripts/basic.arc
+t/sample-data/test-scripts/lib/MyMoreTests.pm
+t/sample-data/test-scripts/with-include.t

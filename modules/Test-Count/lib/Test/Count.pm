@@ -27,12 +27,34 @@ sub _assert_prefix_regex
     return $self->{'_assert_prefix_regex'};
 }
 
+sub _filename
+{
+    my $self = shift;
+    if (@_)
+    {
+        $self->{'_filename'} = shift;
+    }
+    return $self->{'_filename'};
+}
+
 sub _init
 {
     my $self = shift;
     my $args = shift;
 
-    my $in = $args->{'input_fh'};
+    my $in;
+    
+    if (exists($args->{'filename'}))
+    {
+        $self->_filename($args->{'filename'});
+        open $in, "<", $self->_filename()
+            or die "Could not open '" . $self->_filename() . "' - $!."
+        ;
+    }
+    else
+    {
+        $in = $args->{'input_fh'};
+    }
 
     $self->_in_fh($in);
     if (exists($args->{'assert_prefix_regex'}))
@@ -120,15 +142,20 @@ The lines of the stream as is.
 sub process
 {
     my $self = shift;
+    my $args = shift;
 
-    my $parser = Test::Count::Parser->new();
+    my $parser = $args->{parser} || Test::Count::Parser->new();
+
+    $parser->_push_current_filename($self->_filename);
 
     my $assert_re = $self->_assert_prefix_regex();
 
-    my @file_lines;
-    while (my $line = readline($self->_in_fh()))
+    my @file_lines = readline($self->_in_fh());
+    close($self->_in_fh());
+
+    foreach my $idx (0 .. $#file_lines)
     {
-        push @file_lines, $line;
+        my $line = $file_lines[$idx];
 
         chomp($line);
         if ($line =~ /${assert_re}:(.*)$/)
@@ -150,6 +177,7 @@ sub process
             );
         }
     }
+    $parser->_pop_current_filenames();
 
     return { 'tests_count' => $parser->get_count(), 'lines' => \@file_lines,};
 }

@@ -1,5 +1,8 @@
 Revision history for Test::Count
 
+          - Added Test::Count::FileMutator that can also handle the
+          {{ source "file" }} include statement.
+
 0.0500    Tue Jul  7 01:03:14 IDT 2009
           - Added lib/Test/Count/Filter/ByFileType/App.pm , which allows
           command-line filtering by file-type.
