@@ -182,6 +182,20 @@ sub process
     return { 'tests_count' => $parser->get_count(), 'lines' => \@file_lines,};
 }
 
+=head1 GRAMMAR DESCRIPTION
+
+You can put any mathematical expressions (using parentheses, C<+>, C<->,
+C<*>, C</> and C<%> there). 
+You can also assign variables using 
+C<# TEST:$myvar=5+6;$second_var=$myvar+3> and later use them in the add
+to count expressions. A C<$var++> construct is also available.
+
+You can also do C<# TEST:source "path-to-file-here.txt"> where the filename
+comes in quotes, in order to include the filename and process it (similar
+to the C-shell or Bash "source" command) . You can use the special variable 
+C<$^CURRENT_DIRNAME> there for the dirname of the current file.
+
+Finally, C<# TEST*EXPR()> and C<# TEST+$EXPR()> add tests to the count.
 
 =head1 AUTHOR
 
