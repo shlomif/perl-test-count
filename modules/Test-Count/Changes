@@ -1,5 +1,6 @@
 Revision history for Test::Count
 
+0.0600    Sun Sep 27 07:31:36 IST 2009
           - Added Test::Count::FileMutator that can also handle the
           {{ source "file" }} include statement.
           - Added Test::Count::FileMutator::ByFileType::App
