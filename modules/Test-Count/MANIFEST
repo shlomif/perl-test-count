@@ -4,6 +4,7 @@ examples/perl-test-manage-helper.pl
 examples/perl-test-manage.vim
 inc/Test/Run/Builder.pm
 lib/Test/Count/Base.pm
+lib/Test/Count/FileMutator/ByFileType/App.pm
 lib/Test/Count/FileMutator.pm
 lib/Test/Count/Filter/ByFileType/App.pm
 lib/Test/Count/Filter.pm
