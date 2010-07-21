@@ -168,7 +168,7 @@ total number of tests.
 
 =head1 FUNCTIONS
 
-=head2 $parser->update_assignments({'text' => $mytext,)
+=head2 $parser->update_assignments({'text' => $mytext,})
 
 Updates the parser's state based on the assignments in C<$mytext>. For
 example if C<$mytext> is:
@@ -186,7 +186,7 @@ sub update_assignments
     return $self->_parser()->assignments($args->{text});
 }
 
-=head2 $parser->update_count({'text' => $mytext,)
+=head2 $parser->update_count({'text' => $mytext,})
 
 Adds the expression inside C<$mytext> to the internal counter of the
 module. This is in order to count the tests.
