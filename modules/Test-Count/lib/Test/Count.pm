@@ -197,6 +197,31 @@ C<$^CURRENT_DIRNAME> there for the dirname of the current file.
 
 Finally, C<# TEST*EXPR()> and C<# TEST+$EXPR()> add tests to the count.
 
+=head1 EXAMPLE
+
+The first example is very trivial:
+
+    #!/usr/bin/perl
+
+    use strict;
+    use warnings;
+
+    use Test::More tests => 2;
+
+    # TEST
+    ok (1, "True is true.");
+    
+    {
+        my $val = 'foobar';
+
+        # TEST
+        is ($val, 'foobar', 'The variable $val has the right value.');
+    }
+
+As you can see, the C<# TEST> comments are very close to the assertions where
+they are easily noticable and easy to maintain by the tests (if more tests
+are added or removed).
+
 =head1 AUTHOR
 
 Shlomi Fish, C<< <shlomif at cpan.org> >>
