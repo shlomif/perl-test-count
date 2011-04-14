@@ -12,6 +12,10 @@ my $builder = Test::Run::Builder->new(
     dist_abstract        => "A Module to keep track of the number of tests in a script.",
     dist_author         => 'Shlomi Fish <shlomif@cpan.org>',
     dist_version_from   => 'lib/Test/Count.pm',
+    configure_requires =>
+    {
+        'Module::Build' => '0.36',
+    },
     requires => {
         'Parse::RecDescent' => 0,
         'base' => 0,
