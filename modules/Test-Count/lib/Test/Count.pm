@@ -197,7 +197,9 @@ C<$^CURRENT_DIRNAME> there for the dirname of the current file.
 
 Finally, C<# TEST*EXPR()> and C<# TEST+$EXPR()> add tests to the count.
 
-=head1 EXAMPLE
+=head1 EXAMPLES
+
+=head2 Trivial
 
 The first example is very trivial:
 
@@ -221,6 +223,56 @@ The first example is very trivial:
 As you can see, the C<# TEST> comments are very close to the assertions where
 they are easily noticable and easy to maintain by the tests (if more tests
 are added or removed).
+
+=head2 Loops
+
+Now, let's suppose you have several files which you'd like to make sure
+validate according to the spec, and are processed well using the processor.
+
+    #!/usr/bin/perl
+
+    use strict;
+    use warnings;
+
+    use Test::More tests => 18;
+    use IO::All;
+    use Test::Differences;
+
+    use MyFormatProcessor;
+
+    # TEST:$num_files=6;
+    my @basenames = 
+    (qw(
+        basic
+        with_ampersands
+        with_comments
+        with_bold
+        with_italics
+        with_bold_and_italics
+    ));
+
+    foreach my $basename (@basenames)
+    {
+        my $processor = MyFormatProcessor->new(
+            {
+                filename => "t/data/input/$basename.myformat",
+            }
+        );
+
+        # TEST*$num_files
+        ok ($processor,
+            "Construction of a processor for '$basename' was successful."
+        );
+
+        # TEST*$num_files
+        ok (scalar($processor->is_valid()), "'$basename' is valid.");
+    
+        # TEST*$num_files
+        eq_or_diff ($processor->convert_to_xhtml, 
+            scalar(io("t/data/want-output/$basename.xhtml")->slurp()),
+            "Converting '$basename' is successful."
+        );
+    }
 
 =head1 AUTHOR
 
