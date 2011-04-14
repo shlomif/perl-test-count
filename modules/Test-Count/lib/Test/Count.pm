@@ -274,6 +274,10 @@ validate according to the spec, and are processed well using the processor.
         );
     }
 
+As you can see, the number of files is kept in one central place, and each
+assertion inside the loop is multiplied by it. So if we add or remove files,
+we only need to add or remove them from their declarations.
+
 =head1 AUTHOR
 
 Shlomi Fish, L<http://www.shlomifish.org/> .
