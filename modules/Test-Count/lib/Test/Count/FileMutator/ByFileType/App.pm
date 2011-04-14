@@ -85,7 +85,7 @@ __END__
 
 =head1 AUTHOR
 
-Shlomi Fish, L<http://www.shlomifish.org/>
+Shlomi Fish, L<http://www.shlomifish.org/> .
 
 =head1 BUGS
 
