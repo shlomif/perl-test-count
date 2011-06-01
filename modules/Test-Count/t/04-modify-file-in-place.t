@@ -6,24 +6,33 @@ use warnings;
 use Test::More tests => 1;
 use File::Spec;
 use File::Copy;
+use File::Temp qw(tempdir);
 
 use Test::Count::FileMutator;
 use IO::Scalar;
 
-sub calc_fn
 {
-    my $basename = shift;
+    # We need to copy everything into a temporary directory because MS
+    # Windows tester do not like us writing to tests in the working copy:
+    #
+    # http://www.cpantesters.org/cpan/report/4936c342-71bd-1014-a781-9481788a0512
 
-    return File::Spec->catfile(File::Spec->curdir(),
-        qw(t sample-data test-scripts),
-        $basename,
+    my $temp_dir = tempdir( CLEANUP => 1);
+    my $temp_lib_dir = File::Spec->catdir($temp_dir, "lib");
+
+    my $orig_dir = File::Spec->catdir(
+        File::Spec->curdir(), qw(t sample-data test-scripts)
     );
-}
 
-{
+    mkdir ($temp_lib_dir);
 
-    my $orig_fn = calc_fn("with-include.t");
-    my $fn = calc_fn("with-include-temp.t");
+    copy (
+        File::Spec->catfile($orig_dir, "lib", "MyMoreTests.pm"),
+        File::Spec->catfile($temp_lib_dir, "MyMoreTests.pm")
+    );
+
+    my $orig_fn = File::Spec->catfile($orig_dir, "with-include.t");
+    my $fn = File::Spec->catfile($temp_dir, "with-include-temp.t");
 
     copy($orig_fn, $fn)
         or die "Copy failed: $!";
