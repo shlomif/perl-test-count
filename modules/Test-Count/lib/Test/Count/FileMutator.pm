@@ -13,7 +13,7 @@ Test::Count::FileMutator - modify a file in place
 
 =cut
 
-our $VERSION = '0.0700';
+our $VERSION = '0.0701';
 
 sub _counter
 {

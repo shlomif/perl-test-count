@@ -1,5 +1,6 @@
 Revision history for Test::Count
 
+0.0701    Wed Jun  1 21:38:16 IDT 2011
           - Fix t/04-modify-file-in-place.t to use File::Temp's tempdir().
             - This was done to settle MS-Windows-based testers such as:
             - http://www.cpantesters.org/cpan/report/4936c342-71bd-1014-a781-9481788a0512
