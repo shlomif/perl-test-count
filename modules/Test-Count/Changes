@@ -1,66 +1,68 @@
 Revision history for Test::Count
 
-          - Add the ./scripts/tag-release.pl to tag a release.
+    - Add the ./scripts/tag-release.pl to tag a release.
+    - Reformat this file (= "Changes") to make it better as far as 4-space
+    jumps / indents are concerned.
+           
+0.0701      Wed Jun  1 21:38:16 IDT 2011
+    - Fix t/04-modify-file-in-place.t to use File::Temp's tempdir().
+        - This was done to settle MS-Windows-based testers such as:
+        - http://www.cpantesters.org/cpan/report/4936c342-71bd-1014-a781-9481788a0512
 
-0.0701    Wed Jun  1 21:38:16 IDT 2011
-          - Fix t/04-modify-file-in-place.t to use File::Temp's tempdir().
-            - This was done to settle MS-Windows-based testers such as:
-            - http://www.cpantesters.org/cpan/report/4936c342-71bd-1014-a781-9481788a0512
+0.0700      Thu Apr 14 18:43:11 IDT 2011
+    - Added some examples in lib/Test/Count.pm .
 
-0.0700    Thu Apr 14 18:43:11 IDT 2011
-          - Added some examples in lib/Test/Count.pm .
+0.0600      Sun Sep 27 07:31:36 IST 2009
+    - Added Test::Count::FileMutator that can also handle the
+    {{ source "file" }} include statement.
+    - Added Test::Count::FileMutator::ByFileType::App
 
-0.0600    Sun Sep 27 07:31:36 IST 2009
-          - Added Test::Count::FileMutator that can also handle the
-          {{ source "file" }} include statement.
-          - Added Test::Count::FileMutator::ByFileType::App
+0.0500      Tue Jul  7 01:03:14 IDT 2009
+    - Added lib/Test/Count/Filter/ByFileType/App.pm , which allows
+    command-line filtering by file-type.
+    - Enhanced the Build.PL with resources and keywords.
 
-0.0500    Tue Jul  7 01:03:14 IDT 2009
-          - Added lib/Test/Count/Filter/ByFileType/App.pm , which allows
-          command-line filtering by file-type.
-          - Enhanced the Build.PL with resources and keywords.
+0.0401      Fri Jan 23 18:38:45 IST 2009
+    - Documentation fixes.
 
-0.0401    Fri Jan 23 18:38:45 IST 2009
-          - Documentation fixes.
+0.04        Thu Aug 14 21:37:40 IDT 2008
+    - added the "++" operator for variables.
 
-0.04      Thu Aug 14 21:37:40 IDT 2008
-          - added the "++" operator for variables.
+0.0301      Fri Mar 14 21:18:10 IST 2008
+    - added more modules to the Build.PL 'build_requires'. They are
+    core modules, since perl-5.6.x+. Kwalitee stuff.
 
-0.0301    Fri Mar 14 21:18:10 IST 2008
-          - added more modules to the Build.PL 'build_requires'. They are
-          core modules, since perl-5.6.x+. Kwalitee stuff.
+0.03        Fri Mar 14 21:11:04 IST 2008
+    - added some examples to examples/ - Kwalitee and stuff.
 
-0.03      Fri Mar 14 21:11:04 IST 2008
-          - added some examples to examples/ - Kwalitee and stuff.
+0.02        Fri Mar 14 13:12:50 IST 2008
+    - Added the 'assert_prefix_regex' and 'plan_prefix_regex' options
+    so one can apply Test::Count on different languages besides Perl.
 
-0.02      Fri Mar 14 13:12:50 IST 2008
-          - Added the 'assert_prefix_regex' and 'plan_prefix_regex' options
-          so one can apply Test::Count on different languages besides Perl.
+0.0105      Sat Mar  1 15:52:35 IST 2008
+    - Now handling trailing whitespace in "# TEST" lines properly.
 
-0.0105    Sat Mar  1 15:52:35 IST 2008
-          - Now handling trailing whitespace in "# TEST" lines properly.
+0.0104      Wed Nov 21 12:07:32 IST 2007
+    - Fixed the 'requires' and 'build_requires' in the Build.PL
+    file.
 
-0.0104    Wed Nov 21 12:07:32 IST 2007
-          - Fixed the 'requires' and 'build_requires' in the Build.PL
-          file.
+0.0103      Tue Nov 20 22:52:42 IST 2007
+    - Upgraded Test::Run::Builder that works properly with the recent
+    Test::Run and friends.          
+    - Fixed a bug with using variables whose values are zero in
+    expressions.
+    - Fixed a bug in which assignments were performed twice.
 
-0.0103    Tue Nov 20 22:52:42 IST 2007
-          - Upgraded Test::Run::Builder that works properly with the recent
-          Test::Run and friends.          
-          - Fixed a bug with using variables whose values are zero in
-          expressions.
-          - Fixed a bug in which assignments were performed twice.
+0.0102      Tue Sep 19 14:40:34 IDT 2006
+    - Now generating a pass-through Makefile.PL.
 
-0.0102    Tue Sep 19 14:40:34 IDT 2006
-          - Now generating a pass-through Makefile.PL.
+0.0101      Thu Sep 14 17:03:00 IDT 2006
+    - Added an acknowledgement for Parse::RecDescent.
+    - Converted Build.PL to Test::Run::Builder.
+    - Added more meaningful documentation.
 
-0.0101    Thu Sep 14 17:03:00 IDT 2006
-          - Added an acknowledgement for Parse::RecDescent.
-          - Converted Build.PL to Test::Run::Builder.
-          - Added more meaningful documentation.
-
-0.01      Sat Aug 19 17:57:31 IDT 2006
-          - First version
-          - starting from the skeleton of Module-Starter.
-          - Implemented most of the desired functionality. (except various
-          nice to have customizations.)
+0.01        Sat Aug 19 17:57:31 IDT 2006
+    - First version
+    - starting from the skeleton of Module-Starter.
+    - Implemented most of the desired functionality. (except various
+    nice to have customizations.)
