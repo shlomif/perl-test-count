@@ -14,6 +14,7 @@ Makefile.PL
 MANIFEST
 META.yml # Will be created by "make dist"
 README
+scripts/tag-release.pl
 t/00-load.t
 t/01-parser.t
 t/02-main.t
