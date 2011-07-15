@@ -92,7 +92,7 @@ sub _init
 
     $args->{input_fh} ||= \*STDIN;
     $args->{output_fh} ||= \*STDOUT;
-    $args->{plan_prefix_regex} ||= qr{(?:(?:use Test.*\btests)|plan tests)\s*=>\s*};
+    $args->{plan_prefix_regex} ||= qr{(?:(?:use Test.*\btests)|(?:\s*plan tests))\s*=>\s*};
 
 
     # Remmed out because Test::Count handles it by itself.

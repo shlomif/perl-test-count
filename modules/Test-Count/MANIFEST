@@ -28,3 +28,4 @@ t/sample-data/test-scripts/arithmetics.t
 t/sample-data/test-scripts/basic.arc
 t/sample-data/test-scripts/lib/MyMoreTests.pm
 t/sample-data/test-scripts/with-include.t
+t/sample-data/test-scripts/with-indented-plan.t

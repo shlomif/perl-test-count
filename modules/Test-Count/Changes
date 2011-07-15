@@ -1,5 +1,8 @@
 Revision history for Test::Count
 
+    - Now handling an indented (with leading space in the line)
+    'plan tests => $N' line in processing Perl code.
+
 0.0702      Wed Jun  1 21:47:53 IDT 2011
     - Add the ./scripts/tag-release.pl to tag a release.
     - Reformat this file (= "Changes") to make it better as far as 4-space

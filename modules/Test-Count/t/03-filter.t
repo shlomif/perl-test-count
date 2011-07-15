@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 2;
+use Test::More tests => 3;
 use File::Spec;
 
 use Test::Count::Filter;
@@ -210,3 +210,42 @@ EOF
 EOF
 }
 
+{
+    open my $in, "<", File::Spec->catfile("t", "sample-data", "test-scripts", "with-indented-plan.t");
+    my $buffer = "";
+    my $out = IO::Scalar->new(\$buffer);
+    
+    my $filter = Test::Count::Filter->new(
+        {
+            'input_fh' => $in,
+            'output_fh' => $out,
+        }
+    );
+
+    $filter->process();
+
+    # TEST
+    is ($buffer, <<"EOF", "Testing for expected");
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Test::More;
+
+if (exists(\$ENV{TEST_ME}))
+{
+    plan tests => 2;
+}
+else
+{
+    plan skip_all => 'Skipping';
+}
+
+# $mytest
+ok (1, 'One test');
+
+# $mytest
+ok (1, 'Second test');
+EOF
+}
