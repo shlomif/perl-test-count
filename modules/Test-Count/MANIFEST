@@ -8,6 +8,7 @@ lib/Test/Count/FileMutator/ByFileType/App.pm
 lib/Test/Count/FileMutator.pm
 lib/Test/Count/Filter/ByFileType/App.pm
 lib/Test/Count/Filter.pm
+lib/Test/Count/Lib.pm
 lib/Test/Count/Parser.pm
 lib/Test/Count.pm
 Makefile.PL

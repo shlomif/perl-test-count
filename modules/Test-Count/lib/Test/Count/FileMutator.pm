@@ -6,6 +6,7 @@ use strict;
 use base 'Test::Count::Base';
 
 use Test::Count;
+use Test::Count::Lib;
 
 =head1 NAME
 
@@ -86,7 +87,7 @@ sub _init
     my $self = shift;
     my $args = shift;
 
-    $args->{plan_prefix_regex} ||= qr{(?:(?:use Test.*\btests)|(?:\s*plan tests))\s*=>\s*};
+    $args->{plan_prefix_regex} ||= Test::Count::Lib::perl_plan_prefix_regex();
 
     # Remmed out because Test::Count handles it by itself.
     # if (defined($args->{assert_prefix_regex}))
