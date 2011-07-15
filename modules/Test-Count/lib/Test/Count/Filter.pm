@@ -15,7 +15,7 @@ Test::Count::Filter - a filter that counts the tests and updates the test count.
 
 =cut
 
-our $VERSION = '0.0702';
+our $VERSION = '0.0800';
 
 sub _counter
 {
