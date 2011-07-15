@@ -86,7 +86,7 @@ sub _init
     my $self = shift;
     my $args = shift;
 
-    $args->{plan_prefix_regex} ||= qr{(?:(?:use Test.*\btests)|plan tests)\s*=>\s*};
+    $args->{plan_prefix_regex} ||= qr{(?:(?:use Test.*\btests)|(?:\s*plan tests))\s*=>\s*};
 
     # Remmed out because Test::Count handles it by itself.
     # if (defined($args->{assert_prefix_regex}))
