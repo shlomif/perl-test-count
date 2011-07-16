@@ -7,9 +7,25 @@ use Test::More tests => 3;
 use File::Spec;
 use File::Copy;
 use File::Temp qw(tempdir);
+use Carp;
 
 use Test::Count::FileMutator;
 use IO::Scalar;
+
+sub _mycopy
+{
+    my ($src, $dest) = @_;
+
+    File::Copy::copy($src, $dest)
+        or Carp::confess("Copy failed $!");
+
+    # This is to make the resultant file read/write on Windows.
+    # See:
+    # http://www.nntp.perl.org/group/perl.cpan.testers.discuss/2011/07/msg2523.html
+    chmod(0644, $dest);
+
+    return 1; 
+}
 
 {
     # We need to copy everything into a temporary directory because MS
@@ -26,7 +42,7 @@ use IO::Scalar;
 
     mkdir ($temp_lib_dir);
 
-    copy (
+    _mycopy (
         File::Spec->catfile($orig_dir, "lib", "MyMoreTests.pm"),
         File::Spec->catfile($temp_lib_dir, "MyMoreTests.pm")
     );
@@ -34,8 +50,7 @@ use IO::Scalar;
     my $orig_fn = File::Spec->catfile($orig_dir, "with-include.t");
     my $fn = File::Spec->catfile($temp_dir, "with-include-temp.t");
 
-    copy($orig_fn, $fn)
-        or die "Copy failed: $!";
+    _mycopy($orig_fn, $fn);
 
     my $mutator = Test::Count::FileMutator->new(
         {
@@ -78,8 +93,7 @@ use IO::Scalar;
     my $orig_fn = File::Spec->catfile($orig_dir, "with-indented-plan.t");
     my $fn = File::Spec->catfile($temp_dir,  "with-indented-plan.t");
 
-    copy($orig_fn, $fn)
-        or die "Copy failed: $!";
+    _mycopy($orig_fn, $fn);
 
     my $mutator = Test::Count::FileMutator->new(
         {

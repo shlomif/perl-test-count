@@ -1,5 +1,10 @@
 Revision history for Test::Count
 
+    - fix for File::Copy on Win32 in t/04-modify-file-in-place.t .
+        - it writes the copied files as read-only.
+        - http://www.nntp.perl.org/group/perl.cpan.testers.discuss/2011/07/msg2523.html
+        - thanks to Serguei Trouchelle
+
 0.0800      Fri Jul 15 23:53:32 IDT 2011
     - Now handling an indented (with leading space in the line)
     'plan tests => $N' line in processing Perl code.
