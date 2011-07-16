@@ -1,5 +1,6 @@
 Revision history for Test::Count
 
+0.0801      Sat Jul 16 19:55:20 IDT 2011
     - fix for File::Copy on Win32 in t/04-modify-file-in-place.t .
         - it writes the copied files as read-only.
         - http://www.nntp.perl.org/group/perl.cpan.testers.discuss/2011/07/msg2523.html
