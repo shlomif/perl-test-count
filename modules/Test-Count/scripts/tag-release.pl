@@ -19,10 +19,9 @@ if (!defined ($version))
 my $mini_repos_base = 'https://svn.berlios.de/svnroot/repos/web-cpan/Test-Count';
 
 my @cmd = (
-    "svn", "copy", "-m",
+    "hg", "tag", "-m",
     "Tagging the Test-Count release as $version",
-    "$mini_repos_base/trunk",
-    "$mini_repos_base/tags/releases/$version",
+    "releases/$version",
 );
 
 print join(" ", map { /\s/ ? qq{"$_"} : $_ } @cmd), "\n";
