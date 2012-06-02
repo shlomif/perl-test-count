@@ -10,6 +10,8 @@ use base 'Exporter';
 
 our @EXPORT = (qw(run));
 
+=encoding utf8
+
 =head1 NAME
 
 Test::Count::Filter::ByFileType::App - a standalone command line application 

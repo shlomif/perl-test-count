@@ -11,6 +11,8 @@ sub perl_plan_prefix_regex
 
 1;
 
+=encoding utf8
+
 =head1 NAME
 
 Test::Count::Lib - various commonly used routines.

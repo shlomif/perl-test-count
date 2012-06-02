@@ -1,5 +1,7 @@
 package Test::Count::Base;
 
+=encoding utf8
+
 =head1 NAME
 
 Test::Count::Base - Base Class for Test::Count.

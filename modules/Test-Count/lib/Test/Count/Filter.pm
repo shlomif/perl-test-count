@@ -9,6 +9,8 @@ use Test::Count;
 
 use Test::Count::Lib;
 
+=encoding utf8
+
 =head1 NAME
 
 Test::Count::Filter - a filter that counts the tests and updates the test count.

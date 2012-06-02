@@ -8,6 +8,8 @@ use base 'Test::Count::Base';
 use Test::Count;
 use Test::Count::Lib;
 
+=encoding utf8
+
 =head1 NAME
 
 Test::Count::FileMutator - modify a file in place

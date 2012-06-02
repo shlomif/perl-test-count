@@ -9,6 +9,8 @@ use File::Basename (qw(dirname));
 
 use Parse::RecDescent;
 
+=encoding utf8
+
 =head1 NAME
 
 Test::Count::Parser - A Parser for Test::Count. 

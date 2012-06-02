@@ -69,6 +69,9 @@ sub _init
 
     return 0;
 }
+
+=encoding utf8
+
 =head1 NAME
 
 Test::Count - Module for keeping track of the number of tests in a test script.
