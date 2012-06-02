@@ -16,6 +16,7 @@ lib/Test/Count/Filter.pm
 lib/Test/Count/Filter/ByFileType/App.pm
 lib/Test/Count/Lib.pm
 lib/Test/Count/Parser.pm
+scripts/bump-version-number.pl
 scripts/tag-release.pl
 t/00-load.t
 t/01-parser.t
