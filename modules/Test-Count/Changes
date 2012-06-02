@@ -6,6 +6,7 @@ Revision history for Test::Count
         - http://www.cpantesters.org/cpan/report/86726260-ac00-11e1-a922-8f495ba78cfe
     - Add a "LICENSE" file to the distribution.
     - Add scripts/bump-version-number.pl
+    - Updated the scripts/tag-release.pl script for mercurial.
 
 0.0801      Sat Jul 16 19:55:20 IDT 2011
     - fix for File::Copy on Win32 in t/04-modify-file-in-place.t .
