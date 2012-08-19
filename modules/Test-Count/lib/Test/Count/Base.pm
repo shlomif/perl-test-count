@@ -26,7 +26,7 @@ sub new
 
     bless $self, $class;
     $self->_init(@_);
-    
+
     return $self;
 }
 

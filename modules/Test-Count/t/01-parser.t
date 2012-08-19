@@ -41,7 +41,7 @@ use Test::Count::Parser;
             text => q{$myvar=$NUM_ITERS-2}
         },
     );
-    
+
     $parser->update_count(
         {
             text => q{$myvar+$TESTS_PER_ITER}
@@ -58,7 +58,7 @@ use Test::Count::Parser;
             text => q{$var1=100}
         },
     );
-    
+
     $parser->update_count(
         {
             text => q{$var1-30}
@@ -118,9 +118,9 @@ use Test::Count::Parser;
             text => q{$n*2}
         }
     );
-    
+
     # TEST
-    is ($parser->get_count(), 6, 
+    is ($parser->get_count(), 6,
         "Using a variable whose value is 0 inside an expression"
     );
 }
@@ -148,12 +148,12 @@ use Test::Count::Parser;
             text => q{$cnt}
         }
     );
-    
+
     # TEST
-    is ($parser->get_count(), 2, 
+    is ($parser->get_count(), 2,
         "Testing ++",
     );
-    
+
     $parser->update_assignments(
         {
             text => q{$test_num=$cnt}
@@ -173,7 +173,7 @@ use Test::Count::Parser;
     );
 
     # TEST
-    is ($parser->get_count(), (2+(2+1)*3), 
+    is ($parser->get_count(), (2+(2+1)*3),
         "Testing assignment to a ++'ed variable",
     );
 }

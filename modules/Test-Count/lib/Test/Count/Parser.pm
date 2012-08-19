@@ -13,7 +13,7 @@ use Parse::RecDescent;
 
 =head1 NAME
 
-Test::Count::Parser - A Parser for Test::Count. 
+Test::Count::Parser - A Parser for Test::Count.
 
 =cut
 
@@ -38,7 +38,7 @@ assignment:    variable '=' statement   {$thisparser->{vars}->{$item [1]} = $ite
 expression:     variable '++'            {$thisparser->{vars}->{$item [1]}++}
               | term '+' expression      {$item [1] + $item [3]}
               | term '-' expression      {$item [1] - $item [3]}
-              | term 
+              | term
 
 term:           factor '*' term          {$item [1] * $item [3]}
               | factor '/' term          {int($item [1] / $item [3])}
@@ -46,7 +46,7 @@ term:           factor '*' term          {$item [1] * $item [3]}
 
 factor:         number
               | variable                 {
-                (exists($thisparser->{vars}->{$item [1]}) 
+                (exists($thisparser->{vars}->{$item [1]})
                     ? $thisparser->{vars}->{$item [1]}
                     : do { die "Undefined variable \"$item[1]\""; } )
                     }
@@ -215,7 +215,7 @@ sub update_count
 {
     my ($self, $args) = @_;
 
-    return $self->_parser()->update_count($args->{text});    
+    return $self->_parser()->update_count($args->{text});
 }
 
 =head2 my $count = $parser->get_count()

@@ -14,7 +14,7 @@ my $mytest = "T". "E" . "S" . "T";
     open my $in, "<", File::Spec->catfile("t", "sample-data", "test-scripts", "01-parser.t");
     my $buffer = "";
     my $out = IO::Scalar->new(\$buffer);
-    
+
     my $filter = Test::Count::Filter->new(
         {
             'input_fh' => $in,
@@ -70,7 +70,7 @@ use Test::Count::Parser;
             text => q{\$myvar=\$NUM_ITERS-2}
         },
     );
-    
+
     \$parser->update_count(
         {
             text => q{\$myvar+\$TESTS_PER_ITER}
@@ -87,7 +87,7 @@ use Test::Count::Parser;
             text => q{\$var1=100}
         },
     );
-    
+
     \$parser->update_count(
         {
             text => q{\$var1-30}
@@ -126,7 +126,7 @@ EOF
     open my $in, "<", File::Spec->catfile("t", "sample-data", "test-scripts", "basic.arc");
     my $buffer = "";
     my $out = IO::Scalar->new(\$buffer);
-    
+
     my $filter = Test::Count::Filter->new(
         {
             'input_fh' => $in,
@@ -214,7 +214,7 @@ EOF
     open my $in, "<", File::Spec->catfile("t", "sample-data", "test-scripts", "with-indented-plan.t");
     my $buffer = "";
     my $out = IO::Scalar->new(\$buffer);
-    
+
     my $filter = Test::Count::Filter->new(
         {
             'input_fh' => $in,

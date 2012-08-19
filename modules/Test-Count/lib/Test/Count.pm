@@ -43,7 +43,7 @@ sub _init
     my $args = shift;
 
     my $in;
-    
+
     if (exists($args->{'filename'}))
     {
         $self->_filename($args->{'filename'});
@@ -87,14 +87,14 @@ our $VERSION = '0.0802';
 =head1 DESCRIPTION
 
 Test::Count is a set of perl modules for keeping track of the number of tests
-in a test file. It works by putting in comments of the form C<# TEST> 
+in a test file. It works by putting in comments of the form C<# TEST>
 (one test), C<# TEST*$EXPR> or C<# TEST+$EXPR> (both are multiple tests).
 Test::Count count these tests throughout the fileand return all of their
 results.
 
 One can put any mathematical expressions (using parentheses, C<+>, C<->,
-C<*>, C</> and C<%> there). 
-One can also assign variables using 
+C<*>, C</> and C<%> there).
+One can also assign variables using
 C<# TEST:$myvar=5+6;$second_var=$myvar+3> and later use them in the add
 to count expressions. A C<$var++> construct is also available.
 
@@ -111,7 +111,7 @@ tests in the file is:
 
 =head2 my $counter = Test::Count->new({'input_fh' => \*MYFILEHANDLE});
 
-Creates a new Test::Count object that process the filehandle specified in 
+Creates a new Test::Count object that process the filehandle specified in
 C<'input_fh'>. Optional keys are:
 
 =over 4
@@ -188,14 +188,14 @@ sub process
 =head1 GRAMMAR DESCRIPTION
 
 You can put any mathematical expressions (using parentheses, C<+>, C<->,
-C<*>, C</> and C<%> there). 
-You can also assign variables using 
+C<*>, C</> and C<%> there).
+You can also assign variables using
 C<# TEST:$myvar=5+6;$second_var=$myvar+3> and later use them in the add
 to count expressions. A C<$var++> construct is also available.
 
 You can also do C<# TEST:source "path-to-file-here.txt"> where the filename
 comes in quotes, in order to include the filename and process it (similar
-to the C-shell or Bash "source" command) . You can use the special variable 
+to the C-shell or Bash "source" command) . You can use the special variable
 C<$^CURRENT_DIRNAME> there for the dirname of the current file.
 
 Finally, C<# TEST*EXPR()> and C<# TEST+$EXPR()> add tests to the count.
@@ -215,7 +215,7 @@ The first example is very trivial:
 
     # TEST
     ok (1, "True is true.");
-    
+
     {
         my $val = 'foobar';
 
@@ -244,7 +244,7 @@ validate according to the spec, and are processed well using the processor.
     use MyFormatProcessor;
 
     # TEST:$num_files=6;
-    my @basenames = 
+    my @basenames =
     (qw(
         basic
         with_ampersands
@@ -269,9 +269,9 @@ validate according to the spec, and are processed well using the processor.
 
         # TEST*$num_files
         ok (scalar($processor->is_valid()), "'$basename' is valid.");
-    
+
         # TEST*$num_files
-        eq_or_diff ($processor->convert_to_xhtml, 
+        eq_or_diff ($processor->convert_to_xhtml,
             scalar(io("t/data/want-output/$basename.xhtml")->slurp()),
             "Converting '$basename' is successful."
         );

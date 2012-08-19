@@ -14,7 +14,7 @@ our @EXPORT = (qw(run));
 
 =head1 NAME
 
-Test::Count::Filter::ByFileType::App - a standalone command line application 
+Test::Count::Filter::ByFileType::App - a standalone command line application
 that filters according to the filetype.
 
 =head1 SYNOPSIS
@@ -40,7 +40,7 @@ sub run
 
     my %params =
     (
-        'lisp' => 
+        'lisp' =>
         {
             assert_prefix_regex => qr{; TEST},
             plan_prefix_regex => qr{\(plan\s+},
@@ -66,7 +66,7 @@ sub run
     $filetype = exists($aliases{$filetype}) ? $aliases{$filetype} : $filetype;
     my $ft_params = exists($params{$filetype}) ? $params{$filetype} : +{};
 
-    my $filter = 
+    my $filter =
         Test::Count::Filter->new(
             {
                 %{$ft_params},

@@ -123,7 +123,7 @@ sub process
     my $self = shift;
 
     my $ret = $self->_counter()->process();
-    
+
     my $count = $ret->{tests_count};
 
     my $plan_re = $self->_plan_prefix_regex();
@@ -132,7 +132,7 @@ sub process
     LINES_LOOP:
     while (my $l = shift(@lines))
     {
-        if ($l =~ 
+        if ($l =~
             s{^($plan_re)\d+}{$1$count}
            )
         {
@@ -201,7 +201,7 @@ sub update_count
 {
     my ($self, $args) = @_;
 
-    return $self->_parser()->update_count($args->{text});    
+    return $self->_parser()->update_count($args->{text});
 }
 
 =head2 my $count = $parser->get_count()

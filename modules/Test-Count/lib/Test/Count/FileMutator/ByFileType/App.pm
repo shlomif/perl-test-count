@@ -42,7 +42,7 @@ sub run
 
     my %params =
     (
-        'lisp' => 
+        'lisp' =>
         {
             assert_prefix_regex => qr{; TEST},
             plan_prefix_regex => qr{\(plan\s+},
@@ -68,7 +68,7 @@ sub run
     $filetype = exists($aliases{$filetype}) ? $aliases{$filetype} : $filetype;
     my $ft_params = exists($params{$filetype}) ? $params{$filetype} : +{};
 
-    my $mutator = 
+    my $mutator =
         Test::Count::FileMutator->new(
             {
                 filename => $filename,

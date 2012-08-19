@@ -42,7 +42,7 @@ use Test::Count::Parser;
             text => q{$myvar=$NUM_ITERS-2}
         },
     );
-    
+
     $parser->update_count(
         {
             text => q{$myvar+$TESTS_PER_ITER}
@@ -59,7 +59,7 @@ use Test::Count::Parser;
             text => q{$var1=100}
         },
     );
-    
+
     $parser->update_count(
         {
             text => q{$var1-30}

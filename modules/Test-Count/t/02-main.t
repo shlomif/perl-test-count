@@ -11,7 +11,7 @@ use Test::Count;
 
 {
     open my $in, "<", File::Spec->catfile("t", "sample-data", "test-scripts", "01-parser.t");
-    
+
     my $counter = Test::Count->new(
         {
             'input_fh' => $in,
@@ -27,11 +27,11 @@ use Test::Count;
 }
 
 {
-    open my $in, "<", 
+    open my $in, "<",
         File::Spec->catfile(
             "t", "sample-data", "test-scripts","arithmetics.t"
         );
-    
+
     my $counter = Test::Count->new(
         {
             'input_fh' => $in,
@@ -50,7 +50,7 @@ use Test::Count;
     my $buffer = "# T" . "EST        \n".
     "ok (1, 'Everything is OK');\n";
     my $in = IO::Scalar->new(\$buffer);
-    
+
     my $counter = Test::Count->new(
         {
             'input_fh' => $in,

@@ -1,5 +1,7 @@
 Revision history for Test::Count
 
+    - add t/style-trailing-space.t and got rid of annoying trailing space.
+
 0.0802
     - add "=encoding utf8" to all lib/**.pm files in order to please
     recent versions of Pod::Simple and Test::Pod happy.
@@ -22,7 +24,7 @@ Revision history for Test::Count
     - Add the ./scripts/tag-release.pl to tag a release.
     - Reformat this file (= "Changes") to make it better as far as 4-space
     jumps / indents are concerned.
-           
+
 0.0701      Wed Jun  1 21:38:16 IDT 2011
     - Fix t/04-modify-file-in-place.t to use File::Temp's tempdir().
         - This was done to settle MS-Windows-based testers such as:
@@ -67,7 +69,7 @@ Revision history for Test::Count
 
 0.0103      Tue Nov 20 22:52:42 IST 2007
     - Upgraded Test::Run::Builder that works properly with the recent
-    Test::Run and friends.          
+    Test::Run and friends.
     - Fixed a bug with using variables whose values are zero in
     expressions.
     - Fixed a bug in which assignments were performed twice.

@@ -24,7 +24,7 @@ sub _mycopy
     # http://www.nntp.perl.org/group/perl.cpan.testers.discuss/2011/07/msg2523.html
     chmod(0644, $dest);
 
-    return 1; 
+    return 1;
 }
 
 {

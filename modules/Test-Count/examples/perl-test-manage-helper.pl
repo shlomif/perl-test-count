@@ -1,4 +1,4 @@
-#!/usr/bin/perl 
+#!/usr/bin/perl
 
 use strict;
 use warnings;
@@ -9,10 +9,10 @@ use Getopt::Long;
 my $filetype = "perl";
 GetOptions('ft=s' => \$filetype);
 
-my $filter = 
+my $filter =
     Test::Count::Filter->new(
         {
-            ($filetype eq "arc") ? 
+            ($filetype eq "arc") ?
             (
                 assert_prefix_regex => qr{; TEST},
                 plan_prefix_regex => qr{\(plan\s+},
