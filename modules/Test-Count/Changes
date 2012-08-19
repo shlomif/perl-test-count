@@ -1,5 +1,6 @@
 Revision history for Test::Count
 
+0.0803      Sun 19 Aug 22:33:49 IDT 2012
     - add t/style-trailing-space.t and got rid of annoying trailing space.
 
 0.0802

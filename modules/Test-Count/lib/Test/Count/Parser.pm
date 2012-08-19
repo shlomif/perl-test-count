@@ -17,7 +17,7 @@ Test::Count::Parser - A Parser for Test::Count.
 
 =cut
 
-our $VERSION = '0.0802';
+our $VERSION = '0.0803';
 
 sub _get_grammar
 {
