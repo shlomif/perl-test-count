@@ -1,5 +1,6 @@
 Revision history for Test::Count
 
+0.0900      Sat 18 May 13:12:39 IDT 2013
     - Implement the +=, -= and *= operators.
 
 0.0803      Sun 19 Aug 22:33:49 IDT 2012
