@@ -35,6 +35,7 @@ including_file: 'source' string          {push @{$thisparser->{includes}}, $item
 
 assignment:    variable '=' statement   {$thisparser->{vars}->{$item [1]} = $item [3]}
               | variable '+=' statement   {$thisparser->{vars}->{$item [1]} += $item [3]}
+              | variable '-=' statement   {$thisparser->{vars}->{$item [1]} -= $item [3]}
 
 expression:     variable '++'            {$thisparser->{vars}->{$item [1]}++}
               | term '+' expression      {$item [1] + $item [3]}
