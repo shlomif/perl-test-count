@@ -6,3 +6,6 @@ modules/Test-Count/MYMETA.yml
 modules/Test-Count/Makefile.PL
 modules/Test-Count/_build
 modules/Test-Count/blib
+
+syntax: regexp
+^modules/Test-Count/Test-Count-\d+\.\d+(?:/|\.tar\.gz$)
