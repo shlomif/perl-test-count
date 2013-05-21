@@ -34,7 +34,7 @@ my $builder = Test::Run::Builder->new(
     {
         resources =>
         {
-            repository => "http://svn.berlios.de/svnroot/repos/web-cpan/Test-Count/trunk",
+            repository => "http://bitbucket.org/shlomif/perl-test-count",
         },
         keywords =>
         [
