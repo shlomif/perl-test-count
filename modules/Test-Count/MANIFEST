@@ -24,6 +24,7 @@ t/02-main.t
 t/03-filter.t
 t/04-modify-file-in-place.t
 t/boilerplate.t
+t/cpan-changes.t
 t/pod-coverage.t
 t/pod.t
 t/sample-data/test-scripts/01-parser.t
