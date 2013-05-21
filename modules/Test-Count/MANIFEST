@@ -3,7 +3,6 @@ Changes
 LICENSE
 MANIFEST
 META.yml # Will be created by "make dist"
-Makefile.PL
 README
 examples/perl-test-manage-helper.pl
 examples/perl-test-manage.vim
