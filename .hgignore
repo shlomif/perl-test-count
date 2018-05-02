@@ -1,11 +1,4 @@
-modules/Test-Count/Build
-modules/Test-Count/META.json
-modules/Test-Count/META.yml
-modules/Test-Count/MYMETA.json
-modules/Test-Count/MYMETA.yml
-modules/Test-Count/Makefile.PL
-modules/Test-Count/_build
-modules/Test-Count/blib
+modules/Test-Count/.build
 
 syntax: regexp
 ^modules/Test-Count/Test-Count-\d+\.\d+(?:/|\.tar\.gz$)
