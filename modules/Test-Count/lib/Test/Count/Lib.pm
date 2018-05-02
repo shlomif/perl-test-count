@@ -5,8 +5,7 @@ use warnings;
 
 sub perl_plan_prefix_regex
 {
-    return
-    qr{(?:(?:use Test.*\btests)|(?:\s*plan tests))\s*=>\s*};
+    return qr{(?:(?:use Test.*\btests)|(?:\s*plan tests))\s*=>\s*};
 }
 
 1;
@@ -77,4 +76,4 @@ This program is released under the following license: MIT X11.
 
 =cut
 
-1; # End of Test::Count::Lib
+1;    # End of Test::Count::Lib

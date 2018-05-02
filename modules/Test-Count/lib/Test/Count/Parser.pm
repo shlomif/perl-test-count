@@ -68,10 +68,10 @@ sub _calc_parser
 {
     my $self = shift;
 
-    my $parser = Parse::RecDescent->new($self->_get_grammar());
+    my $parser = Parse::RecDescent->new( $self->_get_grammar() );
 
-    $parser->{vars} = {};
-    $parser->{count} = 0;
+    $parser->{vars}     = {};
+    $parser->{count}    = 0;
     $parser->{includes} = [];
 
     return $parser;
@@ -101,8 +101,8 @@ sub _init
 {
     my $self = shift;
 
-    $self->_current_fns([]);
-    $self->_parser($self->_calc_parser());
+    $self->_current_fns( [] );
+    $self->_parser( $self->_calc_parser() );
 
     return 0;
 }
@@ -143,20 +143,20 @@ Then at the end C<$myvar> would be 500 and C<$another_var> would be 508.
 
 sub _push_current_filename
 {
-    my $self = shift;
+    my $self     = shift;
     my $filename = shift;
 
-    push @{$self->_current_fns()}, $filename;
+    push @{ $self->_current_fns() }, $filename;
 
     return;
 }
 
 sub _pop_current_filenames
 {
-    my $self = shift;
+    my $self     = shift;
     my $filename = shift;
 
-    pop(@{$self->_current_fns()});
+    pop( @{ $self->_current_fns() } );
 
     return;
 }
@@ -170,13 +170,13 @@ sub _get_current_filename
 
 sub _parse_filename
 {
-    my $self = shift;
+    my $self     = shift;
     my $filename = shift;
 
     $filename =~ s{\A"}{};
     $filename =~ s{"\z}{};
 
-    my $dirname = dirname($self->_get_current_filename());
+    my $dirname = dirname( $self->_get_current_filename() );
     $filename =~ s{\$\^CURRENT_DIRNAME}{$dirname}g;
 
     return $filename;
@@ -184,22 +184,21 @@ sub _parse_filename
 
 sub update_assignments
 {
-    my ($self, $args) = @_;
+    my ( $self, $args ) = @_;
 
     $self->_parser->{includes} = [];
-    my $ret = $self->_parser()->assignments($args->{text});
+    my $ret = $self->_parser()->assignments( $args->{text} );
 
-    if (@{$self->_parser->{includes}})
+    if ( @{ $self->_parser->{includes} } )
     {
-        foreach my $include_file (@{$self->_parser->{includes}})
+        foreach my $include_file ( @{ $self->_parser->{includes} } )
         {
-            my $counter =
-                Test::Count->new(
-                    {
-                        filename => $self->_parse_filename($include_file),
-                    },
-                );
-            $counter->process({parser => $self});
+            my $counter = Test::Count->new(
+                {
+                    filename => $self->_parse_filename($include_file),
+                },
+            );
+            $counter->process( { parser => $self } );
         }
         $self->_parser->{includes} = [];
     }
@@ -214,9 +213,9 @@ module. This is in order to count the tests.
 
 sub update_count
 {
-    my ($self, $args) = @_;
+    my ( $self, $args ) = @_;
 
-    return $self->_parser()->update_count($args->{text});
+    return $self->_parser()->update_count( $args->{text} );
 }
 
 =head2 my $count = $parser->get_count()
@@ -287,4 +286,4 @@ This program is released under the following license: MIT X11.
 
 =cut
 
-1; # End of Test::Count::Parser
+1;    # End of Test::Count::Parser

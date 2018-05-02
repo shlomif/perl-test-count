@@ -36,45 +36,39 @@ Runs the program.
 sub run
 {
     my $filetype = "perl";
-    GetOptions('ft=s' => \$filetype);
+    GetOptions( 'ft=s' => \$filetype );
 
     my $filename = shift(@ARGV);
 
-    my %params =
-    (
-        'lisp' =>
-        {
+    my %params = (
+        'lisp' => {
             assert_prefix_regex => qr{; TEST},
-            plan_prefix_regex => qr{\(plan\s+},
+            plan_prefix_regex   => qr{\(plan\s+},
         },
-        'c' =>
-        {
+        'c' => {
             assert_prefix_regex => qr{/[/\*]\s+TEST},
-            plan_prefix_regex => qr{\s*plan_tests\s*\(\s*},
+            plan_prefix_regex   => qr{\s*plan_tests\s*\(\s*},
         },
-        'python' =>
-        {
+        'python' => {
             plan_prefix_regex => qr{plan\s*\(\s*},
         },
     );
 
-    my %aliases =
-    (
-        'arc' => "lisp",
+    my %aliases = (
+        'arc'    => "lisp",
         'scheme' => "lisp",
-        'cpp' => "c",
+        'cpp'    => "c",
     );
 
-    $filetype = exists($aliases{$filetype}) ? $aliases{$filetype} : $filetype;
-    my $ft_params = exists($params{$filetype}) ? $params{$filetype} : +{};
+    $filetype = exists( $aliases{$filetype} ) ? $aliases{$filetype} : $filetype;
+    my $ft_params = exists( $params{$filetype} ) ? $params{$filetype} : +{};
 
-    my $mutator =
-        Test::Count::FileMutator->new(
-            {
-                filename => $filename,
-                %{$ft_params},
-            }
-        );
+    my $mutator = Test::Count::FileMutator->new(
+        {
+            filename => $filename,
+            %{$ft_params},
+        }
+    );
 
     $mutator->modify();
 

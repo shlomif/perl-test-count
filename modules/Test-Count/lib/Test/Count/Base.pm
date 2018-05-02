@@ -22,7 +22,7 @@ Initialises Test::Count::Base using the _init() abstract method.
 sub new
 {
     my $class = shift;
-    my $self = {};
+    my $self  = {};
 
     bless $self, $class;
     $self->_init(@_);

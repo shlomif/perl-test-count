@@ -44,12 +44,11 @@ sub _init
 
     my $in;
 
-    if (exists($args->{'filename'}))
+    if ( exists( $args->{'filename'} ) )
     {
-        $self->_filename($args->{'filename'});
+        $self->_filename( $args->{'filename'} );
         open $in, "<", $self->_filename()
-            or die "Could not open '" . $self->_filename() . "' - $!."
-        ;
+            or die "Could not open '" . $self->_filename() . "' - $!.";
     }
     else
     {
@@ -57,10 +56,10 @@ sub _init
     }
 
     $self->_in_fh($in);
-    if (exists($args->{'assert_prefix_regex'}))
+    if ( exists( $args->{'assert_prefix_regex'} ) )
     {
         my $re = $args->{'assert_prefix_regex'};
-        $self->_assert_prefix_regex((ref($re) eq "") ? qr{$re} : $re);
+        $self->_assert_prefix_regex( ( ref($re) eq "" ) ? qr{$re} : $re );
     }
     else
     {
@@ -145,19 +144,19 @@ sub process
 
     my $parser = $args->{parser} || Test::Count::Parser->new();
 
-    $parser->_push_current_filename($self->_filename);
+    $parser->_push_current_filename( $self->_filename );
 
     my $assert_re = $self->_assert_prefix_regex();
 
-    my @file_lines = readline($self->_in_fh());
-    close($self->_in_fh());
+    my @file_lines = readline( $self->_in_fh() );
+    close( $self->_in_fh() );
 
-    foreach my $idx (0 .. $#file_lines)
+    foreach my $idx ( 0 .. $#file_lines )
     {
         my $line = $file_lines[$idx];
 
         chomp($line);
-        if ($line =~ /${assert_re}:(.*)$/)
+        if ( $line =~ /${assert_re}:(.*)$/ )
         {
             $parser->update_assignments(
                 {
@@ -165,20 +164,21 @@ sub process
                 }
             );
         }
+
         # The \s* is to handle trailing whitespace properly.
-        elsif ($line =~ /${assert_re}((?:[+*].*)?)\s*$/)
+        elsif ( $line =~ /${assert_re}((?:[+*].*)?)\s*$/ )
         {
             my $s = $1;
             $parser->update_count(
                 {
-                    'text' => (($s eq "") ? 1 : substr($s,1)),
+                    'text' => ( ( $s eq "" ) ? 1 : substr( $s, 1 ) ),
                 }
             );
         }
     }
     $parser->_pop_current_filenames();
 
-    return { 'tests_count' => $parser->get_count(), 'lines' => \@file_lines,};
+    return { 'tests_count' => $parser->get_count(), 'lines' => \@file_lines, };
 }
 
 =head1 GRAMMAR DESCRIPTION
@@ -328,4 +328,4 @@ This program is released under the following license: MIT X11.
 
 =cut
 
-1; # End of Test::Count
+1;    # End of Test::Count

@@ -94,10 +94,10 @@ sub _init
     # {
     #     $self->_assert_prefix_regex($args->{assert_prefix_regex});
     # }
-    $self->_plan_prefix_regex($args->{plan_prefix_regex});
-    $self->_filename($args->{filename});
+    $self->_plan_prefix_regex( $args->{plan_prefix_regex} );
+    $self->_filename( $args->{filename} );
 
-    $self->_counter(Test::Count->new($args));
+    $self->_counter( Test::Count->new($args) );
 
     return 0;
 }
@@ -118,16 +118,16 @@ sub modify
 
     my $plan_re = $self->_plan_prefix_regex();
 
-    my @lines = @{$ret->{lines}};
+    my @lines = @{ $ret->{lines} };
 
     open my $out_fh, ">", $self->_filename()
-        or die "Could not open file '" . $self->_filename() . "' for writing - $!.";
-    LINES_LOOP:
-    while (my $l = shift(@lines))
+        or die "Could not open file '"
+        . $self->_filename()
+        . "' for writing - $!.";
+LINES_LOOP:
+    while ( my $l = shift(@lines) )
     {
-        if ($l =~
-            s{^($plan_re)\d+}{$1$count}
-           )
+        if ( $l =~ s{^($plan_re)\d+}{$1$count} )
         {
             print {$out_fh} $l;
             last LINES_LOOP;
@@ -179,9 +179,9 @@ Then at the end C<$myvar> would be 500 and C<$another_var> would be 508.
 
 sub update_assignments
 {
-    my ($self, $args) = @_;
+    my ( $self, $args ) = @_;
 
-    return $self->_parser()->assignments($args->{text});
+    return $self->_parser()->assignments( $args->{text} );
 }
 
 =head2 $parser->update_count({'text' => $mytext,})
@@ -193,9 +193,9 @@ module. This is in order to count the tests.
 
 sub update_count
 {
-    my ($self, $args) = @_;
+    my ( $self, $args ) = @_;
 
-    return $self->_parser()->update_count($args->{text});
+    return $self->_parser()->update_count( $args->{text} );
 }
 
 =head2 my $count = $parser->get_count()
@@ -265,4 +265,4 @@ This program is released under the following license: MIT X11.
 
 =cut
 
-1; # End of Test::Count::Parser
+1;    # End of Test::Count::Parser
