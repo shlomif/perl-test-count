@@ -47,7 +47,7 @@ sub _mycopy
         File::Spec->catfile($temp_lib_dir, "MyMoreTests.pm")
     );
 
-    my $orig_fn = File::Spec->catfile($orig_dir, "with-include.t");
+    my $orig_fn = File::Spec->catfile($orig_dir, "with-include.pl");
     my $fn = File::Spec->catfile($temp_dir, "with-include-temp.t");
 
     _mycopy($orig_fn, $fn);
@@ -90,7 +90,7 @@ sub _mycopy
         File::Spec->curdir(), qw(t sample-data test-scripts)
     );
 
-    my $orig_fn = File::Spec->catfile($orig_dir, "with-indented-plan.t");
+    my $orig_fn = File::Spec->catfile($orig_dir, "with-indented-plan.pl");
     my $fn = File::Spec->catfile($temp_dir,  "with-indented-plan.t");
 
     _mycopy($orig_fn, $fn);

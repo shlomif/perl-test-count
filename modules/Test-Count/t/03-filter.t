@@ -11,7 +11,7 @@ use IO::Scalar;
 
 my $mytest = "T". "E" . "S" . "T";
 {
-    open my $in, "<", File::Spec->catfile("t", "sample-data", "test-scripts", "01-parser.t");
+    open my $in, "<", File::Spec->catfile("t", "sample-data", "test-scripts", "01-parser.pl");
     my $buffer = "";
     my $out = IO::Scalar->new(\$buffer);
 
@@ -211,7 +211,7 @@ EOF
 }
 
 {
-    open my $in, "<", File::Spec->catfile("t", "sample-data", "test-scripts", "with-indented-plan.t");
+    open my $in, "<", File::Spec->catfile("t", "sample-data", "test-scripts", "with-indented-plan.pl");
     my $buffer = "";
     my $out = IO::Scalar->new(\$buffer);
 

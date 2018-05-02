@@ -10,7 +10,7 @@ use IO::Scalar;
 use Test::Count;
 
 {
-    open my $in, "<", File::Spec->catfile("t", "sample-data", "test-scripts", "01-parser.t");
+    open my $in, "<", File::Spec->catfile("t", "sample-data", "test-scripts", "01-parser.pl");
 
     my $counter = Test::Count->new(
         {
@@ -29,7 +29,7 @@ use Test::Count;
 {
     open my $in, "<",
         File::Spec->catfile(
-            "t", "sample-data", "test-scripts","arithmetics.t"
+            "t", "sample-data", "test-scripts","arithmetics.pl"
         );
 
     my $counter = Test::Count->new(
