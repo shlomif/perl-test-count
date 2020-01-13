@@ -1,0 +1,38 @@
+Test::Count
+===========
+
+Test::Count is a module to count and update the number of assertions in
+the test plan of test scripts. It can be used
+for https://metacpan.org/pod/Test::More[Test::More] test suites,
+but is not limited to them.
+
+It supports a mini language for arithmetical expressions in order to calculate
+the number of tests.
+
+INSTALLATION
+
+To install this module, run the following commands:
+
+----
+cpanm Test::Count
+----
+
+SUPPORT AND DOCUMENTATION
+
+After installing, you can find documentation for this module with the perldoc command.
+
+----
+perldoc Test::Count
+----
+
+You can also look for information at:
+
+* http://metacpan.org/release/Test-Count[MetaCPAN]
+
+License:
+--------
+
+Copyright (C) 2006 Shlomi Fish
+
+This program is released under the following license: https://tldrlegal.com/license/mit-license[MIT / Expat].
+
