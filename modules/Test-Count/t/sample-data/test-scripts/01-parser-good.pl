@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 # An unrealistic number so the number of tests will be accurate.
-use Test::More tests => 100200;
+use Test::More tests => 5;
 
 use Test::Count::Parser ();
 

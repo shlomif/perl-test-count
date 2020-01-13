@@ -3,11 +3,10 @@ package Test::Count::Filter;
 use warnings;
 use strict;
 
-use base 'Test::Count::Base';
+use parent 'Test::Count::Base';
 
-use Test::Count;
-
-use Test::Count::Lib;
+use Test::Count      ();
+use Test::Count::Lib ();
 
 =encoding utf8
 

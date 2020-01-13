@@ -239,10 +239,10 @@ validate according to the spec, and are processed well using the processor.
     use warnings;
 
     use Test::More tests => 18;
-    use IO::All;
-    use Test::Differences;
+    use IO::All qw/ io /;
+    use Test::Differences qw/ eq_or_diff /;
 
-    use MyFormatProcessor;
+    use MyFormatProcessor ();
 
     # TEST:$num_files=6;
     my @basenames =
@@ -278,7 +278,12 @@ validate according to the spec, and are processed well using the processor.
         );
     }
 
-=head2 Loops
+
+As you can see, the number of files is kept in one central place, and each
+assertion inside the loop is multiplied by it. So if we add or remove files,
+we only need to add or remove them from their declarations.
+
+=head2 Loops using FILTER()
 
 Starting from Test::Count version 0.1100 one can also use
 the C<< FILTER(MULT($expr)) >> and C< ENDFILTER() > notations.
@@ -289,10 +294,10 @@ the C<< FILTER(MULT($expr)) >> and C< ENDFILTER() > notations.
     use warnings;
 
     use Test::More tests => 18;
-    use IO::All;
-    use Test::Differences;
+    use IO::All qw/ io /;
+    use Test::Differences qw/ eq_or_diff /;
 
-    use MyFormatProcessor;
+    use MyFormatProcessor ();
 
     # TEST:$num_files=6;
     my @basenames =

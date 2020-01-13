@@ -3,10 +3,10 @@ package Test::Count::Filter::ByFileType::App;
 use strict;
 use warnings;
 
-use Test::Count::Filter;
-use Getopt::Long;
+use Test::Count::Filter ();
+use Getopt::Long qw/ GetOptions /;
 
-use base 'Exporter';
+use parent 'Exporter';
 
 our @EXPORT = (qw(run));
 

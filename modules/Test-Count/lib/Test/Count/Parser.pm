@@ -3,11 +3,11 @@ package Test::Count::Parser;
 use warnings;
 use strict;
 
-use base 'Test::Count::Base';
+use parent 'Test::Count::Base';
 
 use File::Basename (qw(dirname));
 
-use Parse::RecDescent;
+use Parse::RecDescent ();
 
 =encoding utf8
 
@@ -116,7 +116,7 @@ sub _init
 
 =head1 SYNOPSIS
 
-    use Test::Count::Parser;
+    use Test::Count::Parser ();
 
     my $parser = Test::Count::Parser->new();
 
