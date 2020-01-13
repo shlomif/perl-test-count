@@ -20,7 +20,7 @@ Test::Count::Parser - A Parser for Test::Count.
 sub _get_grammar
 {
     return <<'EOF';
-update_count: expression            {$thisparser->{count} += $item[1]}
+update_count: expression            {$thisparser->{count} += $item[1] * $thisparser->{filter_mults}->[-1]}
 
 assignments:    statement <commit> ';' assignments
               | statement
@@ -28,6 +28,12 @@ assignments:    statement <commit> ';' assignments
 statement:    assignment
               | expression               {$item [1]}
               | including_file           {$item [1]}
+              | start_filter
+              | end_filter
+
+start_filter: 'FILTER(MULT(' expression '))' {push @{$thisparser->{filter_mults}}, $thisparser->{filter_mults}->[-1] * $item[2] ; }
+
+end_filter: 'ENDFILTER()' {if (@{$thisparser->{filter_mults}} <= 1) { die "Too many ENDFILTER()s"; } pop @{$thisparser->{filter_mults}}; }
 
 including_file: 'source' string          {push @{$thisparser->{includes}}, $item[2];}
 
@@ -70,9 +76,10 @@ sub _calc_parser
 
     my $parser = Parse::RecDescent->new( $self->_get_grammar() );
 
-    $parser->{vars}     = {};
-    $parser->{count}    = 0;
-    $parser->{includes} = [];
+    $parser->{vars}         = {};
+    $parser->{count}        = 0;
+    $parser->{includes}     = [];
+    $parser->{filter_mults} = [1];
 
     return $parser;
 }
@@ -252,10 +259,6 @@ You can find documentation for this module with the perldoc command.
 You can also look for information at:
 
 =over 4
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Test::Count>
 
 =item * CPAN Ratings
 

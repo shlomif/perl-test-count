@@ -145,16 +145,8 @@ LINES_LOOP:
 
 =head1 SYNOPSIS
 
-    use Test::Count::Parser;
-
-    my $parser = Test::Count::Parser->new();
-
-    $parser->update_assignments($string);
-
-    $parser->update_count($string);
-
-    my $value = $parser->get_count();
-
+    # TODO: fill in
+    #
 =head1 DESCRIPTION
 
 After initiating a parser one can input assignment expressions, and count

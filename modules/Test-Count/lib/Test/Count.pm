@@ -3,9 +3,9 @@ package Test::Count;
 use warnings;
 use strict;
 
-use base 'Test::Count::Base';
+use parent 'Test::Count::Base';
 
-use Test::Count::Parser;
+use Test::Count::Parser ();
 
 sub _in_fh
 {
@@ -177,6 +177,10 @@ sub process
         }
     }
     $parser->_pop_current_filenames();
+    if ( @{ $parser->_parser->{filter_mults} } != 1 )
+    {
+        die "Unbalanced FILTER() and ENDFILTER().";
+    }
 
     return { 'tests_count' => $parser->get_count(), 'lines' => \@file_lines, };
 }
@@ -274,9 +278,57 @@ validate according to the spec, and are processed well using the processor.
         );
     }
 
-As you can see, the number of files is kept in one central place, and each
-assertion inside the loop is multiplied by it. So if we add or remove files,
-we only need to add or remove them from their declarations.
+=head2 Loops
+
+Starting from Test::Count version 0.1100 one can also use
+the C<< FILTER(MULT($expr)) >> and C< ENDFILTER() > notations.
+
+    #!/usr/bin/perl
+
+    use strict;
+    use warnings;
+
+    use Test::More tests => 18;
+    use IO::All;
+    use Test::Differences;
+
+    use MyFormatProcessor;
+
+    # TEST:$num_files=6;
+    my @basenames =
+    (qw(
+        basic
+        with_ampersands
+        with_comments
+        with_bold
+        with_italics
+        with_bold_and_italics
+    ));
+
+    # TEST:FILTER(MULT($num_files))
+    foreach my $basename (@basenames)
+    {
+        my $processor = MyFormatProcessor->new(
+            {
+                filename => "t/data/input/$basename.myformat",
+            }
+        );
+
+        # TEST
+        ok ($processor,
+            "Construction of a processor for '$basename' was successful."
+        );
+
+        # TEST
+        ok (scalar($processor->is_valid()), "'$basename' is valid.");
+
+        # TEST
+        eq_or_diff ($processor->convert_to_xhtml,
+            scalar(io("t/data/want-output/$basename.xhtml")->slurp()),
+            "Converting '$basename' is successful."
+        );
+    }
+    # TEST:ENDFILTER()
 
 =head1 AUTHOR
 
