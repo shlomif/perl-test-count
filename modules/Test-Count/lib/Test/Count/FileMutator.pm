@@ -120,7 +120,7 @@ sub modify
 
     my @lines = @{ $ret->{lines} };
 
-    open my $out_fh, ">", $self->_filename()
+    open my $out_fh, ">:raw", $self->_filename()
         or die "Could not open file '"
         . $self->_filename()
         . "' for writing - $!.";

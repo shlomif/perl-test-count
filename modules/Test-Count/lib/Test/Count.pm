@@ -47,7 +47,7 @@ sub _init
     if ( exists( $args->{'filename'} ) )
     {
         $self->_filename( $args->{'filename'} );
-        open $in, "<", $self->_filename()
+        open $in, "<:raw", $self->_filename()
             or die "Could not open '" . $self->_filename() . "' - $!.";
     }
     else
